@@ -1,0 +1,248 @@
+/* Travelstone — marketing + support site. Brand mirrors the app:
+   warm paper ground, ink text, a single rust accent, Instrument Serif display. */
+
+:root {
+  --paper:    #F5F1E8;
+  --surface:  #FFFDF8;
+  --surface2: #EDE6D6;
+  --border:   #DCD4C2;
+  --rule:     #E2DACA;
+  --ink:      #1C1A15;
+  --muted:    #6F6959;
+  --faint:    #A39C8A;
+  --rust:     #8A5A2B;
+  --rust-deep:#6F4820;
+  --success:  #4E7A5E;
+  --shadow:   0 1px 2px rgba(28,26,21,.05), 0 22px 48px -24px rgba(28,26,21,.28);
+  --shadow-sm:0 1px 2px rgba(28,26,21,.06), 0 10px 24px -16px rgba(28,26,21,.24);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:    #17140F;
+    --surface:  #201C15;
+    --surface2: #29231A;
+    --border:   #37301F;
+    --rule:     #2E2819;
+    --ink:      #F0EADD;
+    --muted:    #B3AB97;
+    --faint:    #7C7563;
+    --rust:     #C79262;
+    --rust-deep:#D8A876;
+    --success:  #8FBFA0;
+    --shadow:   0 1px 2px rgba(0,0,0,.4), 0 24px 52px -22px rgba(0,0,0,.7);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.4), 0 12px 26px -16px rgba(0,0,0,.6);
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter Tight", system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+.narrow { max-width: 760px; }
+
+a { color: var(--rust); text-underline-offset: 2px; text-decoration-thickness: 1px; }
+a:hover { color: var(--rust-deep); }
+:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; border-radius: 3px; }
+
+/* ---- site header ---- */
+.site-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 0 18px;
+  border-bottom: 1px solid var(--rule);
+}
+.brand {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 26px; letter-spacing: .01em; color: var(--ink);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 9px;
+}
+.brand:hover { color: var(--ink); }
+.brand .mark {
+  width: 22px; height: 22px; flex: none;
+  color: var(--rust);
+}
+.site-nav { display: flex; gap: 22px; font-size: 15px; font-weight: 500; }
+.site-nav a { color: var(--muted); text-decoration: none; }
+.site-nav a:hover { color: var(--rust); }
+
+/* ---- hero ---- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(24px, 5vw, 56px);
+  align-items: center;
+  padding: clamp(44px, 8vw, 88px) 0 clamp(40px, 7vw, 72px);
+}
+.eyebrow {
+  font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--rust); margin: 0 0 18px;
+}
+.hero h1 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(44px, 8vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -.005em;
+  margin: 0 0 20px;
+  text-wrap: balance;
+}
+.hero h1 em { font-style: italic; color: var(--rust); }
+.hero .lede {
+  font-size: clamp(17px, 2.2vw, 20px);
+  color: var(--muted);
+  margin: 0 0 28px;
+  max-width: 34ch;
+}
+.hero .note {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 14px; color: var(--muted);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 999px; padding: 8px 15px;
+}
+.hero .note .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); flex: none; }
+
+/* phone image */
+.phone {
+  justify-self: center;
+  width: min(320px, 78vw);
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  background: var(--surface);
+  display: block;
+}
+.phone img { width: 100%; height: auto; display: block; }
+
+/* ---- features ---- */
+.features { display: flex; flex-direction: column; gap: clamp(40px, 8vw, 88px); padding: clamp(20px,4vw,40px) 0 clamp(48px,9vw,96px); }
+.feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
+}
+.feature:nth-child(even) .feature__media { order: -1; }
+.feature__num {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 20px; color: var(--rust); font-style: italic;
+  margin: 0 0 8px;
+}
+.feature h2 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(28px, 4.5vw, 40px);
+  line-height: 1.08;
+  letter-spacing: -.005em;
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+.feature p { color: var(--muted); font-size: 17px; margin: 0; max-width: 42ch; }
+.feature__media { justify-self: center; }
+
+/* ---- closing cta ---- */
+.cta {
+  text-align: center;
+  padding: clamp(44px, 8vw, 84px) 0 clamp(56px, 9vw, 96px);
+  border-top: 1px solid var(--rule);
+}
+.cta h2 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(34px, 6vw, 56px);
+  line-height: 1.05;
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
+.cta h2 em { font-style: italic; color: var(--rust); }
+.cta p { color: var(--muted); margin: 0; font-size: 18px; }
+
+/* ---- footer ---- */
+.site-foot {
+  border-top: 1px solid var(--rule);
+  padding: 30px 0 44px;
+  display: flex; flex-wrap: wrap; gap: 12px 22px;
+  align-items: center; justify-content: space-between;
+  font-size: 14px; color: var(--faint);
+}
+.site-foot nav { display: flex; flex-wrap: wrap; gap: 12px 20px; }
+.site-foot a { color: var(--muted); text-decoration: none; }
+.site-foot a:hover { color: var(--rust); }
+
+/* ---- support page ---- */
+.doc { padding: clamp(40px, 7vw, 72px) 0 clamp(48px, 8vw, 88px); }
+.doc h1 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400; font-size: clamp(40px, 7vw, 60px);
+  line-height: 1.03; margin: 0 0 14px; letter-spacing: -.005em;
+}
+.doc .lede { font-size: 19px; color: var(--muted); margin: 0 0 8px; max-width: 60ch; }
+.faq { display: flex; flex-direction: column; gap: 4px; margin: 36px 0 0; }
+.qa {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+}
+.qa h3 {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 600; font-size: 18px; color: var(--ink);
+  margin: 0 0 7px;
+}
+.qa p { margin: 0; color: var(--muted); font-size: 16px; }
+.qa p + p { margin-top: 8px; }
+.contact {
+  margin-top: 34px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px 24px;
+  text-align: center;
+}
+.contact h3 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400; font-size: 26px; margin: 0 0 6px;
+}
+.contact p { margin: 0 0 14px; color: var(--muted); }
+.contact a.mail {
+  display: inline-block;
+  font-weight: 600; font-size: 17px;
+  color: var(--surface);
+  background: var(--rust);
+  padding: 11px 22px; border-radius: 999px;
+  text-decoration: none;
+}
+.contact a.mail:hover { background: var(--rust-deep); color: var(--surface); }
+
+.section-label {
+  font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--faint); margin: 40px 0 14px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero, .feature, .cta > *, .qa { animation: rise .6s cubic-bezier(.2,.7,.3,1) both; }
+  .features .feature:nth-child(2) { animation-delay: .05s; }
+  .features .feature:nth-child(3) { animation-delay: .1s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+}
+
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; text-align: center; padding-top: 40px; }
+  .hero .lede { margin-left: auto; margin-right: auto; }
+  .feature { grid-template-columns: 1fr; text-align: center; }
+  .feature:nth-child(even) .feature__media { order: 0; }
+  .feature p { margin-left: auto; margin-right: auto; }
+  .phone { width: min(280px, 72vw); }
+  .site-nav { gap: 16px; }
+}
