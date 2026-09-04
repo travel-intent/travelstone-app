@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to Travelstone</title>
+    <meta name="robots" content="noindex" />
+    <meta
+      name="description"
+      content="Your email is confirmed. Welcome onboard with Travelstone."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f5f1e8;
+        --ink: #2b2620;
+        --muted: #6b6152;
+        --rust: #8a5a2b;
+        --rust-strong: #74491f;
+        --card: #fffdf8;
+        --border: #e4dccb;
+        --shadow: rgba(43, 38, 32, 0.1);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --paper: #1c1915;
+          --ink: #f0e9db;
+          --muted: #a89c88;
+          --rust: #d38b4f;
+          --rust-strong: #e0a06b;
+          --card: #262119;
+          --border: #3a332a;
+          --shadow: rgba(0, 0, 0, 0.35);
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      .card {
+        width: 100%;
+        max-width: 460px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 44px 36px 40px;
+        text-align: center;
+        box-shadow: 0 18px 50px var(--shadow);
+      }
+      .mark {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 24px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--rust);
+        color: #fffdf8;
+        font-size: 30px;
+        line-height: 1;
+      }
+      .eyebrow {
+        margin: 0 0 10px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--rust);
+      }
+      h1 {
+        margin: 0 0 16px;
+        font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+      }
+      p {
+        margin: 0 auto;
+        max-width: 34ch;
+        font-size: 17px;
+        color: var(--muted);
+      }
+      .open-app {
+        display: none; /* revealed on iOS by the script below */
+        margin: 30px auto 0;
+        background: var(--rust);
+        color: #fffdf8;
+        text-decoration: none;
+        font-family: inherit;
+        font-size: 17px;
+        font-weight: 600;
+        padding: 14px 28px;
+        border-radius: 12px;
+      }
+      .hint {
+        margin-top: 28px;
+        padding-top: 22px;
+        border-top: 1px solid var(--border);
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .wordmark {
+        margin-top: 30px;
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: 20px;
+        color: var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="mark" aria-hidden="true">✓</div>
+      <p class="eyebrow">Email confirmed</p>
+      <h1>Welcome onboard with Travelstone</h1>
+      <p>Start building your next travel plan with us on your device.</p>
+      <a class="open-app" id="open-app" href="travelplanner://">Open Travelstone</a>
+      <p class="hint" id="hint">
+        You can close this tab and open the Travelstone app to sign in.
+      </p>
+      <div class="wordmark">Travelstone</div>
+    </main>
+
+    <script>
+      // On iPhone/iPad, drop the user straight into the app. iPadOS 13+ reports a
+      // Mac user agent, so also treat "MacIntel with touch" as iPad.
+      (function () {
+        var ua = navigator.userAgent || "";
+        var isIOS =
+          /iPad|iPhone|iPod/.test(ua) ||
+          (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        if (!isIOS) return;
+
+        var APP_URL = "travelplanner://";
+        var button = document.getElementById("open-app");
+        var hint = document.getElementById("hint");
+
+        // Show the tap fallback (a user gesture always launches the app, even when
+        // an automatic scheme redirect is blocked by the in-app/mail browser).
+        button.style.display = "inline-block";
+        hint.textContent =
+          "Not redirected automatically? Tap “Open Travelstone” above.";
+
+        // Try to open the app automatically on load.
+        window.location.href = APP_URL;
+      })();
+    </script>
+  </body>
+</html>
