@@ -134,10 +134,10 @@
   <body>
     <main class="card">
       <div class="mark" aria-hidden="true">✓</div>
-      <p class="eyebrow">Email confirmed</p>
-      <h1>Welcome onboard with Travelstone</h1>
-      <p>Start building your next travel plan with us on your device.</p>
-      <a class="open-app" id="open-app" href="travelplanner://">Open Travelstone</a>
+      <p class="eyebrow" id="eyebrow">Email confirmed</p>
+      <h1 id="heading">Welcome onboard with Travelstone</h1>
+      <p id="body">Start building your next travel plan with us on your device.</p>
+      <a class="open-app" id="open-app" href="travelplanner://auth/callback">Open Travelstone</a>
       <p class="hint" id="hint">
         You can close this tab and open the Travelstone app to sign in.
       </p>
@@ -145,27 +145,58 @@
     </main>
 
     <script>
-      // On iPhone/iPad, drop the user straight into the app. iPadOS 13+ reports a
-      // Mac user agent, so also treat "MacIntel with touch" as iPad.
       (function () {
+        var eyebrow = document.getElementById("eyebrow");
+        var heading = document.getElementById("heading");
+        var body = document.getElementById("body");
+        var button = document.getElementById("open-app");
+        var hint = document.getElementById("hint");
+
+        // If Supabase redirected here with an error (expired/used link), say so
+        // instead of trying to open the app with no valid code.
+        var params = new URLSearchParams(window.location.search);
+        if (params.has("error") || params.has("error_description")) {
+          eyebrow.textContent = "Link problem";
+          heading.textContent = "This link didn't work";
+          body.textContent =
+            "It may have expired or already been used. Open the Travelstone " +
+            "app and sign in, or request a new confirmation email.";
+          return;
+        }
+
+        // Deep link into the app, carrying the confirmation code Supabase appended
+        // to this page's URL (?code=...). AuthProvider's deep-link listener
+        // exchanges it for a session (the PKCE verifier from signup lives on the
+        // device), so the user lands signed in. Forward both the query and any
+        // fragment so either PKCE (?code) or implicit (#access_token) tokens pass
+        // through.
+        var APP_URL =
+          "travelplanner://auth/callback" +
+          window.location.search +
+          window.location.hash;
+        button.setAttribute("href", APP_URL);
+
+        // iPhone/iPad: open the app and sign in. iPadOS 13+ reports a Mac user
+        // agent, so also treat "MacIntel with touch" as iPad.
         var ua = navigator.userAgent || "";
         var isIOS =
           /iPad|iPhone|iPod/.test(ua) ||
           (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-        if (!isIOS) return;
 
-        var APP_URL = "travelplanner://";
-        var button = document.getElementById("open-app");
-        var hint = document.getElementById("hint");
-
-        // Show the tap fallback (a user gesture always launches the app, even when
-        // an automatic scheme redirect is blocked by the in-app/mail browser).
-        button.style.display = "inline-block";
-        hint.textContent =
-          "Not redirected automatically? Tap “Open Travelstone” above.";
-
-        // Try to open the app automatically on load.
-        window.location.href = APP_URL;
+        if (isIOS) {
+          // Show the tap fallback (a user gesture always launches the app, even
+          // when an automatic scheme redirect is blocked by the mail/in-app
+          // browser).
+          button.style.display = "inline-block";
+          hint.textContent =
+            "Not signed in automatically? Tap “Open Travelstone” above.";
+          window.location.href = APP_URL; // try to open + sign in automatically
+        } else {
+          // Desktop / non-iOS: can't open the app from here. The email is already
+          // confirmed; the user signs in on their phone.
+          hint.textContent =
+            "You can close this tab and open the Travelstone app on your phone to sign in.";
+        }
       })();
     </script>
   </body>
