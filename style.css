@@ -70,6 +70,7 @@ a:hover { color: var(--rust-deep); }
 .brand .mark {
   width: 22px; height: 22px; flex: none;
   color: var(--rust);
+  border-radius: 5px; object-fit: cover; display: block;
 }
 .site-nav { display: flex; gap: 22px; font-size: 15px; font-weight: 500; }
 .site-nav a { color: var(--muted); text-decoration: none; }
