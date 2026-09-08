@@ -247,3 +247,61 @@ a:hover { color: var(--rust-deep); }
   .phone { width: min(280px, 72vw); }
   .site-nav { gap: 16px; }
 }
+
+/* ---- shared section heading ---- */
+.section { padding: clamp(40px,7vw,72px) 0; border-top: 1px solid var(--rule); }
+.section > .head { text-align: center; margin: 0 auto clamp(22px,4vw,36px); max-width: 62ch; }
+.section .head h2 {
+  font-family: "Instrument Serif", Georgia, serif; font-weight: 400;
+  font-size: clamp(30px,5vw,46px); line-height: 1.06; margin: 0 0 10px; text-wrap: balance;
+}
+.section .head h2 em { font-style: italic; color: var(--rust); }
+.section .head p { color: var(--muted); margin: 0; font-size: 18px; }
+
+/* ---- how it works ---- */
+.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(16px,3vw,26px); }
+.step {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  padding: 24px 22px; box-shadow: var(--shadow-sm);
+}
+.step .n { font-family: "Instrument Serif", Georgia, serif; font-style: italic; color: var(--rust); font-size: 22px; margin: 0 0 10px; }
+.step h3 { font-family: "Inter Tight", sans-serif; font-weight: 600; font-size: 18px; margin: 0 0 8px; color: var(--ink); }
+.step p { margin: 0; color: var(--muted); font-size: 16px; }
+
+/* ---- guides ---- */
+.guides-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(16px,3vw,24px); }
+.guide-card {
+  display: flex; flex-direction: column; gap: 9px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  padding: 22px 22px 24px; box-shadow: var(--shadow-sm);
+  text-decoration: none; color: var(--ink);
+}
+.guide-card:hover { color: var(--ink); border-color: var(--rust); }
+.guide-card .kicker { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--rust); }
+.guide-card h3 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 24px; line-height: 1.12; margin: 0; }
+.guide-card p { margin: 0; color: var(--muted); font-size: 15px; }
+.guide-card .more { margin-top: 6px; color: var(--rust); font-weight: 600; font-size: 14px; }
+
+/* ---- about ---- */
+.about .head p { max-width: 62ch; margin: 0 auto; }
+
+/* ---- article (guide detail) ---- */
+.article { max-width: 720px; }
+.article .kicker { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--rust); margin: 0 0 12px; }
+.article h1 {
+  font-family: "Instrument Serif", Georgia, serif; font-weight: 400;
+  font-size: clamp(34px,6vw,52px); line-height: 1.04; margin: 0 0 16px; letter-spacing: -.005em; text-wrap: balance;
+}
+.article .lede { font-size: 20px; color: var(--muted); margin: 0 0 28px; }
+.article h2 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: clamp(24px,4vw,32px); line-height: 1.1; margin: 34px 0 12px; }
+.article p { margin: 0 0 16px; color: var(--ink); font-size: 17px; line-height: 1.7; }
+.article ul { margin: 0 0 16px; padding-left: 22px; }
+.article li { margin: 0 0 8px; color: var(--ink); font-size: 17px; line-height: 1.7; }
+.article strong { font-weight: 600; }
+.article .disc { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--faint); }
+.back { display: inline-block; margin-bottom: 20px; font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--rust); }
+
+@media (max-width: 720px) {
+  .steps, .guides-grid { grid-template-columns: 1fr; }
+}
