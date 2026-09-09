@@ -111,13 +111,21 @@ a:hover { color: var(--rust-deep); }
   border-radius: 999px; padding: 8px 15px;
 }
 .hero .note .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); flex: none; }
-.hero a.note--live {
-  text-decoration: none; color: var(--ink); font-weight: 600;
-  transition: border-color .18s ease, color .18s ease, transform .18s ease;
+.hero .appstore-badge {
+  display: inline-block; line-height: 0; border-radius: 8.5px;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
-.hero a.note--live:hover { border-color: var(--rust); color: var(--rust); }
-.hero a.note--live .note__arrow { transition: transform .18s ease; }
-.hero a.note--live:hover .note__arrow { transform: translateX(3px); }
+.hero .appstore-badge svg { display: block; height: auto; max-width: 100%; }
+.hero .appstore-badge:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+.hero .appstore-badge:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
+/* Official badge on a light ground: black lockup, white logo + wordmark. */
+.hero .appstore-badge .badge-bg { fill: #000; }
+.hero .appstore-badge .badge-fg { fill: #fff; }
+/* On a dark ground, invert to the white badge (Apple's dark-mode variant). */
+@media (prefers-color-scheme: dark) {
+  .hero .appstore-badge .badge-bg { fill: #fff; }
+  .hero .appstore-badge .badge-fg { fill: #000; }
+}
 
 /* phone image */
 .phone {
