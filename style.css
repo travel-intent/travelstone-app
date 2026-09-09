@@ -111,6 +111,13 @@ a:hover { color: var(--rust-deep); }
   border-radius: 999px; padding: 8px 15px;
 }
 .hero .note .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); flex: none; }
+.hero a.note--live {
+  text-decoration: none; color: var(--ink); font-weight: 600;
+  transition: border-color .18s ease, color .18s ease, transform .18s ease;
+}
+.hero a.note--live:hover { border-color: var(--rust); color: var(--rust); }
+.hero a.note--live .note__arrow { transition: transform .18s ease; }
+.hero a.note--live:hover .note__arrow { transform: translateX(3px); }
 
 /* phone image */
 .phone {
