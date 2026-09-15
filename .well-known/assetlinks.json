@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.travelstone.app",
+      "sha256_cert_fingerprints": [
+        "FA:03:C7:B7:5E:3E:7F:88:9C:B6:86:39:E8:DA:03:77:EE:A4:64:56:0E:30:29:B4:7E:00:39:49:2F:AD:10:7B"
+      ]
+    }
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["H8998JGAWA.com.travelstone.app"],
+        "components": [
+          { "/": "/s", "comment": "Trip share claim (no query)" },
+          { "/": "/s/*", "comment": "Trip share claim links" }
+        ]
+      }
+    ]
+  }
+}

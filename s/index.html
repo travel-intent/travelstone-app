@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>A trip plan shared with you · Travelstone</title>
+  <meta name="description" content="Someone shared a Travelstone trip plan with you. Get the app to accept it and keep your own copy." />
+  <!-- Generic OG preview (static host can't render per-token) -->
+  <meta property="og:title" content="A trip plan shared with you" />
+  <meta property="og:description" content="Open in Travelstone to get your own copy of the plan." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --paper: #F5F1E8; --ink: #1C1A15; --muted: #6B6455;
+      --rust: #8A5A2B; --surface: #FBF8F1; --border: #E4DCCB;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background: var(--paper); color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100dvh; display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .wrap { width: 100%; max-width: 420px; }
+    .brand { font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 20px; }
+    .card {
+      border: 1px solid var(--rust); border-radius: 16px; background: var(--surface);
+      padding: 24px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start;
+    }
+    .avatar {
+      width: 48px; height: 48px; border-radius: 50%; background: var(--rust); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600;
+      object-fit: cover; overflow: hidden;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    h1 { font-size: 26px; line-height: 1.15; margin: 6px 0 0; font-weight: 600; }
+    .who { color: var(--ink); } .place { color: var(--rust); }
+    p.sub { color: var(--muted); margin: 0; font-size: 15px; line-height: 1.45; }
+    .cta {
+      display: block; text-align: center; text-decoration: none;
+      background: var(--ink); color: var(--paper); border-radius: 12px;
+      padding: 15px; font-size: 16px; font-weight: 600; margin-top: 20px;
+    }
+    .stores { display: flex; gap: 12px; justify-content: center; margin-top: 18px; }
+    .stores a { text-decoration: none; color: var(--ink); border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 14px; font-size: 14px; font-weight: 600; background: var(--surface); }
+    .hint { color: var(--muted); font-size: 13px; text-align: center; margin-top: 16px; line-height: 1.4; }
+    .skeleton { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="brand">Travelstone</p>
+    <div class="card">
+      <div class="avatar" id="avatar">🧳</div>
+      <h1 id="headline"><span class="skeleton">Loading your invite…</span></h1>
+      <p class="sub" id="sub">Get the app to accept and keep your own copy of the plan.</p>
+    </div>
+
+    <a class="cta" id="openApp" href="#">Open in Travelstone</a>
+
+    <div class="stores">
+      <a id="appstore" href="https://apps.apple.com/app/id6806945711">App Store</a>
+      <a id="playstore" href="https://play.google.com/store/apps/details?id=com.travelstone.app">Google Play</a>
+    </div>
+
+    <p class="hint">Already installed? Tap “Open in Travelstone.” New here? Install the app, then open this link again to get the trip.</p>
+  </div>
+
+  <script>
+    // Public, RLS-safe config (anon key ships in the app bundle already).
+    var SUPABASE_URL = "https://dfqtiqwmxrmqywywseyt.supabase.co";
+    var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmcXRpcXdteHJtcXl3eXdzZXl0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4OTI1MDQsImV4cCI6MjEwMzQ2ODUwNH0.6sFB2uz3bLnB9RXSjTIn6j5avf2dHzqN3CQ6pBmbyDY";
+
+    var params = new URLSearchParams(location.search);
+    var token = params.get("t") || "";
+
+    // "Open in app" falls back to the custom scheme when the universal link
+    // didn't catch (e.g. the app is installed but link association is pending).
+    document.getElementById("openApp").href =
+      token ? "travelplanner://s?t=" + encodeURIComponent(token) : "travelplanner://";
+
+    function esc(s) { return (s || "").replace(/[<>&]/g, function (c) {
+      return { "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c]; }); }
+
+    if (token) {
+      fetch(SUPABASE_URL + "/rest/v1/rpc/preview_trip_share", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": "Bearer " + SUPABASE_ANON_KEY
+        },
+        body: JSON.stringify({ p_token: token })
+      })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (rows) {
+          var row = Array.isArray(rows) ? rows[0] : rows;
+          var h = document.getElementById("headline");
+          if (!row || ["revoked", "expired", "declined"].indexOf(row.status) !== -1) {
+            h.textContent = "This invite is no longer available";
+            document.getElementById("sub").textContent = "Ask the sender to share it again.";
+            return;
+          }
+          var who = (row.sender_name || "A friend").trim();
+          var city = ((row.trip_city || "a trip").split(",")[0] || "a trip").trim();
+          h.innerHTML = '<span class="who">' + esc(who) + '</span> shared ' +
+            '<span class="place">' + esc(city) + '</span> with you';
+          document.getElementById("sub").textContent =
+            "Get the app to accept and keep your own copy of the plan.";
+          if (row.sender_avatar) {
+            document.getElementById("avatar").innerHTML =
+              '<img src="' + esc(row.sender_avatar) + '" alt="" />';
+          } else {
+            document.getElementById("avatar").textContent =
+              (who[0] || "T").toUpperCase();
+          }
+        })
+        .catch(function () { /* leave the generic copy */ });
+    } else {
+      document.getElementById("headline").textContent = "A trip plan shared with you";
+    }
+  </script>
+</body>
+</html>
