@@ -2,6 +2,7 @@
    warm paper ground, ink text, a single rust accent, Instrument Serif display. */
 
 :root {
+  color-scheme: light;
   --paper:    #F5F1E8;
   --surface:  #FFFDF8;
   --surface2: #EDE6D6;
@@ -15,23 +16,6 @@
   --success:  #4E7A5E;
   --shadow:   0 1px 2px rgba(28,26,21,.05), 0 22px 48px -24px rgba(28,26,21,.28);
   --shadow-sm:0 1px 2px rgba(28,26,21,.06), 0 10px 24px -16px rgba(28,26,21,.24);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper:    #17140F;
-    --surface:  #201C15;
-    --surface2: #29231A;
-    --border:   #37301F;
-    --rule:     #2E2819;
-    --ink:      #F0EADD;
-    --muted:    #B3AB97;
-    --faint:    #7C7563;
-    --rust:     #C79262;
-    --rust-deep:#D8A876;
-    --success:  #8FBFA0;
-    --shadow:   0 1px 2px rgba(0,0,0,.4), 0 24px 52px -22px rgba(0,0,0,.7);
-    --shadow-sm:0 1px 2px rgba(0,0,0,.4), 0 12px 26px -16px rgba(0,0,0,.6);
-  }
 }
 
 * { box-sizing: border-box; }
@@ -121,11 +105,6 @@ a:hover { color: var(--rust-deep); }
 /* Official badge on a light ground: black lockup, white logo + wordmark. */
 .hero .appstore-badge .badge-bg { fill: #000; }
 .hero .appstore-badge .badge-fg { fill: #fff; }
-/* On a dark ground, invert to the white badge (Apple's dark-mode variant). */
-@media (prefers-color-scheme: dark) {
-  .hero .appstore-badge .badge-bg { fill: #fff; }
-  .hero .appstore-badge .badge-fg { fill: #000; }
-}
 
 /* phone image */
 .phone {
