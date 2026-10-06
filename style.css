@@ -320,3 +320,22 @@ a:hover { color: var(--rust-deep); }
 @media (max-width: 720px) {
   .steps, .guides-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- hero: two store badges side by side ---- */
+.badges { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+@media (max-width: 720px) { .badges { justify-content: center; } }
+
+/* ---- "and more" capabilities grid ---- */
+.caps { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(14px, 2.5vw, 20px); }
+.cap {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  padding: 22px 22px; box-shadow: var(--shadow-sm);
+}
+.cap h3 {
+  font-family: "Inter Tight", sans-serif; font-weight: 600; font-size: 18px;
+  margin: 0 0 7px; color: var(--ink);
+  display: flex; align-items: center; gap: 10px;
+}
+.cap .ico { font-size: 20px; line-height: 1; flex: none; }
+.cap p { margin: 0; color: var(--muted); font-size: 16px; }
+@media (max-width: 720px) { .caps { grid-template-columns: 1fr; } }
