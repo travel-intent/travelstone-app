@@ -75,11 +75,14 @@
 
     var params = new URLSearchParams(location.search);
     var token = params.get("t") || "";
+    var plan = params.get("plan") || ""; // "Plan your <city> trip" email CTA
 
     // "Open in app" falls back to the custom scheme when the universal link
     // didn't catch (e.g. the app is installed but link association is pending).
     document.getElementById("openApp").href =
-      token ? "travelplanner://s?t=" + encodeURIComponent(token) : "travelplanner://";
+      token ? "travelplanner://s?t=" + encodeURIComponent(token)
+      : plan ? "travelplanner://s?plan=" + encodeURIComponent(plan)
+      : "travelplanner://";
 
     function esc(s) { return (s || "").replace(/[<>&]/g, function (c) {
       return { "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c]; }); }
@@ -118,6 +121,14 @@
           }
         })
         .catch(function () { /* leave the generic copy */ });
+    } else if (plan) {
+      document.getElementById("avatar").textContent = "✈️";
+      var city = (params.get("city") || "").trim(); // carried on the email CTA
+      document.getElementById("headline").innerHTML = city
+        ? 'Plan your <span class="place">' + esc(city) + '</span> trip'
+        : "Plan your next trip";
+      document.getElementById("sub").textContent =
+        "Open the Travelstone app to start planning, or install it below.";
     } else {
       document.getElementById("headline").textContent = "A trip plan shared with you";
     }
