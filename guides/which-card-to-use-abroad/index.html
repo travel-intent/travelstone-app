@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem('ts-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>Which card should you use abroad? — Travelstone Guides</title>
 <meta name="description" content="A simple way to choose which card in your wallet to use on a trip: weigh the foreign fee first, then rewards, then acceptance. A short, practical framework.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="../../style.css?v=4">
 </head>
 <body>
 <div class="wrap narrow">
@@ -18,11 +19,16 @@
       <img class="mark" src="../../assets/travelstone-icon.png" width="22" height="22" alt="" aria-hidden="true">
       Travelstone
     </a>
-    <nav class="site-nav">
+    <div class="head-right"><nav class="site-nav">
       <a href="../">Guides</a>
       <a href="../../support/">Support</a>
       <a href="https://travel-intent.github.io/travelstone-legal/">Privacy</a>
     </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch between dark and light theme">
+        <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M3.5 3.5l1.9 1.9M18.6 18.6l1.9 1.9M2 12h2.6M19.4 12H22M3.5 20.5l1.9-1.9M18.6 5.4l1.9-1.9"/></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8z"/></svg>
+      </button>
+    </div>
   </header>
 
   <main class="doc">
@@ -73,6 +79,21 @@
     </nav>
   </div>
 </footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.theme-toggle');
+  if (!btn) return;
+  function sync(){ btn.setAttribute('aria-pressed', document.documentElement.getAttribute('data-theme') === 'light'); }
+  btn.addEventListener('click', function(){
+    var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('ts-theme', next); } catch(e){}
+    sync();
+  });
+  sync();
+})();
+</script>
 
 </body>
 </html>

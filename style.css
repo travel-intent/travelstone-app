@@ -2,6 +2,24 @@
    warm paper ground, ink text, a single rust accent, Instrument Serif display. */
 
 :root {
+  color-scheme: dark;
+  --paper:    #16120C;
+  --surface:  #211B13;
+  --surface2: #2A2318;
+  --border:   #3A3222;
+  --rule:     #2B2518;
+  --ink:      #EFE7D6;
+  --muted:    #A99E88;
+  --faint:    #7C7360;
+  --rust:     #D9AE6A;
+  --rust-deep:#ECC88C;
+  --success:  #83B291;
+  --shadow:   0 1px 2px rgba(0,0,0,.45), 0 26px 52px -24px rgba(0,0,0,.72);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.45), 0 12px 26px -16px rgba(0,0,0,.6);
+}
+
+/* Light theme — applied when the user picks it via the header toggle. */
+:root[data-theme="light"] {
   color-scheme: light;
   --paper:    #F5F1E8;
   --surface:  #FFFDF8;
@@ -17,6 +35,22 @@
   --shadow:   0 1px 2px rgba(28,26,21,.05), 0 22px 48px -24px rgba(28,26,21,.28);
   --shadow-sm:0 1px 2px rgba(28,26,21,.06), 0 10px 24px -16px rgba(28,26,21,.24);
 }
+
+/* ---- theme toggle (header, top right) ---- */
+.head-right { display: flex; align-items: center; gap: clamp(14px, 3vw, 22px); }
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; flex: none; padding: 0;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 999px; color: var(--ink); cursor: pointer;
+  transition: border-color .18s ease, color .18s ease, transform .18s ease;
+}
+.theme-toggle:hover { border-color: var(--rust); color: var(--rust); transform: translateY(-1px); }
+.theme-toggle:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
+.theme-toggle svg { width: 18px; height: 18px; display: block; }
+.theme-toggle .ico-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .ico-sun  { display: none; }
+:root[data-theme="light"] .theme-toggle .ico-moon { display: block; }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
@@ -96,15 +130,12 @@ a:hover { color: var(--rust-deep); }
 }
 .hero .note .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); flex: none; }
 .hero .appstore-badge {
-  display: inline-block; line-height: 0; border-radius: 8.5px;
+  display: inline-block; line-height: 0; border-radius: 9px;
   transition: transform .18s ease, box-shadow .18s ease;
 }
-.hero .appstore-badge svg { display: block; height: auto; max-width: 100%; }
-.hero .appstore-badge:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+.hero .appstore-badge img { display: block; height: 48px; width: auto; border-radius: 9px; }
+.hero .appstore-badge:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,.5); }
 .hero .appstore-badge:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
-/* Official badge on a light ground: black lockup, white logo + wordmark. */
-.hero .appstore-badge .badge-bg { fill: #000; }
-.hero .appstore-badge .badge-fg { fill: #fff; }
 
 /* phone image */
 .phone {
@@ -318,3 +349,44 @@ a:hover { color: var(--rust-deep); }
 .cap .ico { font-size: 20px; line-height: 1; flex: none; }
 .cap p { margin: 0; color: var(--muted); font-size: 16px; }
 @media (max-width: 720px) { .caps { grid-template-columns: 1fr; } }
+
+/* ---- concise feature card grid (replaces tall alternating sections) ---- */
+.features-wrap { padding: clamp(24px,4vw,44px) 0 clamp(32px,6vw,60px); }
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.4vw, 24px);
+}
+.fcard {
+  display: flex; flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform .18s ease, border-color .18s ease;
+}
+.fcard:hover { transform: translateY(-3px); border-color: var(--rust); }
+.fcard__media {
+  display: flex; justify-content: center;
+  padding: 20px 20px 0;
+  background: radial-gradient(120% 90% at 50% 0%, var(--surface2), var(--surface) 72%);
+}
+.fcard__media img {
+  width: 68%; max-width: 230px; height: auto;
+  border-radius: 16px 16px 0 0;
+  border: 1px solid var(--border);
+  border-bottom: 0;
+  display: block;
+}
+.fcard__body { padding: 15px 20px 20px; }
+.fcard h3 {
+  font-family: "Instrument Serif", Georgia, serif; font-weight: 400;
+  font-size: 23px; line-height: 1.1; margin: 0 0 6px; color: var(--ink);
+}
+.fcard p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+@media (max-width: 900px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) {
+  .feature-grid { grid-template-columns: 1fr; gap: 16px; }
+  .fcard__media img { width: 56%; }
+}

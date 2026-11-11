@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem('ts-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>Travelstone — trips you can actually change</title>
 <meta name="description" content="Travelstone turns a destination and a few details into a day-by-day itinerary — swap any stop and the day re-plans. Share trips, write travel stories, make a printed photo-book, and more. For iPhone, iPad and Android.">
 <!-- Cuelinks site verification -->
@@ -10,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <div class="wrap">
@@ -20,11 +21,17 @@
       <img class="mark" src="assets/travelstone-icon.png" width="22" height="22" alt="" aria-hidden="true">
       Travelstone
     </a>
-    <nav class="site-nav">
-      <a href="guides/">Guides</a>
-      <a href="support/">Support</a>
-      <a href="https://travel-intent.github.io/travelstone-legal/">Privacy</a>
-    </nav>
+    <div class="head-right">
+      <nav class="site-nav">
+        <a href="guides/">Guides</a>
+        <a href="support/">Support</a>
+        <a href="https://travel-intent.github.io/travelstone-legal/">Privacy</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch between dark and light theme">
+        <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M3.5 3.5l1.9 1.9M18.6 18.6l1.9 1.9M2 12h2.6M19.4 12H22M3.5 20.5l1.9-1.9M18.6 5.4l1.9-1.9"/></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8z"/></svg>
+      </button>
+    </div>
   </header>
 
   <section class="hero">
@@ -34,138 +41,71 @@
       <p class="lede">Travelstone turns a destination and a few details into a day-by-day itinerary — then lets you swap any stop and re-plan the day in seconds. Share it, story it, or turn it into a printed book.</p>
       <div class="badges">
         <a class="appstore-badge" href="https://apps.apple.com/app/id6806945711" aria-label="Download Travelstone on the App Store">
-          <svg viewBox="0 0 120 40" width="146" height="49" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <rect class="badge-bg" width="120" height="40" rx="8.5" fill="#000"></rect>
-            <g class="badge-fg" transform="translate(11,8.5)" fill="#fff">
-              <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"></path>
-            </g>
-            <text class="badge-fg" x="42" y="16.5" fill="#fff" font-family="-apple-system,'Inter Tight',Helvetica,Arial,sans-serif" font-size="6.7" letter-spacing="0.3">Download on the</text>
-            <text class="badge-fg" x="41.4" y="31" fill="#fff" font-family="-apple-system,'Inter Tight',Helvetica,Arial,sans-serif" font-size="15.2" font-weight="600" letter-spacing="0.2">App Store</text>
-          </svg>
+          <img src="assets/app-store-badge.png" alt="Download on the App Store" width="144" height="48" loading="eager">
         </a>
         <a class="appstore-badge" href="https://play.google.com/store/apps/details?id=com.travelstone.app" aria-label="Get Travelstone on Google Play">
-          <svg viewBox="0 0 135 40" width="164" height="49" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <rect class="badge-bg" width="135" height="40" rx="8.5" fill="#000"></rect>
-            <g class="badge-fg" transform="translate(11,9)" fill="#fff">
-              <path d="M.52.33C.31.55.2.88.2 1.31v19.38c0 .43.11.76.32.98l.07.06L11.4 10.98v-.26L.59.27.52.33z"></path>
-              <path d="M15.03 14.6l-3.63-3.62v-.26l3.63-3.63.08.05 4.3 2.44c1.23.7 1.23 1.84 0 2.54l-4.3 2.44-.08.05z"></path>
-              <path d="M15.11 14.55L11.4 10.85.52 21.67c.4.43 1.07.48 1.82.05l12.77-7.17z"></path>
-              <path d="M15.11 7.14L2.34.03C1.59-.41.92-.36.52.07L11.4 10.85l3.71-3.71z"></path>
-            </g>
-            <text class="badge-fg" x="46" y="15.5" fill="#fff" font-family="-apple-system,'Inter Tight',Helvetica,Arial,sans-serif" font-size="6.5" letter-spacing="0.6">GET IT ON</text>
-            <text class="badge-fg" x="45.4" y="30" fill="#fff" font-family="-apple-system,'Inter Tight',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="600" letter-spacing="0.2">Google Play</text>
-          </svg>
+          <img src="assets/google-play-badge.png" alt="Get it on Google Play" width="162" height="48" loading="eager">
         </a>
       </div>
     </div>
     <span class="phone">
-      <img src="shots/itinerary.png" alt="A Travelstone day-by-day itinerary for Tokyo, with timed stops, photos and alternatives." width="720" height="1564" loading="eager">
+      <img src="shots/hero-cards.png" alt="A Travelstone day in the card view: day 4 of a Japan trip in Tokyo, with Higurashi Bakery for breakfast and Sensō-ji as the next stop." width="720" height="1565" loading="eager">
     </span>
   </section>
 
-  <section class="section" id="how">
+  <section class="section" id="features">
     <div class="head">
-      <h2>From a <em>where</em> to a real plan.</h2>
-      <p>No blank pages, no ten open tabs. Three steps to a day-by-day trip you can adjust as you like.</p>
+      <h2>Everything a trip needs, in one place.</h2>
+      <p>Plan it, price it, shape it to your mood, and change it on the fly.</p>
     </div>
-    <div class="steps">
-      <div class="step">
-        <p class="n">i.</p>
-        <h3>Tell it where &amp; when</h3>
-        <p>Pick a destination and a few details — the dates or season, how long, and the kind of trip. That's the whole brief.</p>
-      </div>
-      <div class="step">
-        <p class="n">ii.</p>
-        <h3>Get a day-by-day plan</h3>
-        <p>Travelstone sketches each day as timed stops — food, sights and downtime — sequenced so the day actually flows.</p>
-      </div>
-      <div class="step">
-        <p class="n">iii.</p>
-        <h3>Change anything</h3>
-        <p>Swap a stop for an alternative and the day re-plans around it. See it as a map. Pack from a list built for the trip.</p>
-      </div>
+    <div class="feature-grid">
+
+      <article class="fcard">
+        <span class="fcard__media"><img src="shots/prices.png" alt="Travelstone's estimated cost sheet, with flights, stay, activities and meals broken out and a trip total." width="720" height="1565" loading="lazy"></span>
+        <div class="fcard__body"><h3>Know the cost up front</h3><p>Flights, stays, activities and meals, estimated as a range before you book.</p></div>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__media"><img src="shots/alternatives.jpg" alt="The alternatives sheet, with options to swap a venue sorted by recommended, cheapest and priciest." width="720" height="1564" loading="lazy"></span>
+        <div class="fcard__body"><h3>Swap any stop</h3><p>Pick an alternative and the day re-plans around it, times and all.</p></div>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__media"><img src="shots/vibes.png" alt="The What's the vibe sheet, with mood options like quiet and inward, bright and social, bold and physical." width="720" height="1565" loading="lazy"></span>
+        <div class="fcard__body"><h3>Set the vibe</h3><p>Choose a mood for a stop and the plan re-shapes to match how the day should feel.</p></div>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__media"><img src="shots/map-day.png" alt="The routed day map, with Tokyo stops connected in order and real walking-time chips between them." width="720" height="1565" loading="lazy"></span>
+        <div class="fcard__body"><h3>See the day as a route</h3><p>Stops in order on the map, linked by real walking and driving times.</p></div>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__media"><img src="shots/cards.png" alt="The Which card to use sheet, recommending the best card to pay with alongside its forex cost and rewards." width="720" height="1565" loading="lazy"></span>
+        <div class="fcard__body"><h3>Know which card to use</h3><p>The best of your own cards to pay with at each stop, fees first, then rewards.</p></div>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__media"><img src="shots/book.png" alt="A printed Travelstone photo-book preview, showing a cover and inside spreads laid out from a trip." width="720" height="1565" loading="lazy"></span>
+        <div class="fcard__body"><h3>Make a photo-book</h3><p>Turn the trip into a printed hardcover or softcover, page by page.</p></div>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__media"><img src="shots/shared.png" alt="The Shared tab, showing trips shared with you alongside your own collections." width="720" height="1565" loading="lazy"></span>
+        <div class="fcard__body"><h3>Share a trip</h3><p>Friends get their own editable copy. Keep shared trips together in collections.</p></div>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__media"><img src="shots/stories.png" alt="The Travel Stories feed, a scroll of first-hand trip stories from other travellers." width="720" height="1565" loading="lazy"></span>
+        <div class="fcard__body"><h3>Tell the story</h3><p>Write up a journey and publish it, or read other travellers' for ideas.</p></div>
+      </article>
+
+      <article class="fcard">
+        <span class="fcard__media"><img src="shots/packing.png" alt="A categorized packing list with checkboxes for documents, clothing and toiletries." width="720" height="1564" loading="lazy"></span>
+        <div class="fcard__body"><h3>Pack for the trip</h3><p>A checklist tuned to your destination, season and length, ready to tick off.</p></div>
+      </article>
+
     </div>
-  </section>
-
-  <section class="features" id="features">
-
-    <article class="feature">
-      <div class="feature__text">
-        <p class="feature__num">i.</p>
-        <h2>Swap anything. The day re-plans.</h2>
-        <p>Every stop comes with alternatives. Don't like a place? Pick another — and Travelstone rebalances the day around your choice, times and all.</p>
-      </div>
-      <span class="phone feature__media">
-        <img src="shots/alternatives.jpg" alt="The alternatives sheet showing options to swap a venue, sorted by recommended, cheapest and priciest." width="720" height="1564" loading="lazy">
-      </span>
-    </article>
-
-    <article class="feature">
-      <div class="feature__text">
-        <p class="feature__num">ii.</p>
-        <h2>See the day as a route.</h2>
-        <p>Each day's stops laid out in order on the map. Tap a pin for the place, its time, rating and a photo — so you can picture the whole day at a glance.</p>
-      </div>
-      <span class="phone feature__media">
-        <img src="shots/map.jpg" alt="A map of Tokyo showing the day's stops connected as a numbered route, with a photo card for Senso-ji." width="720" height="1564" loading="lazy">
-      </span>
-    </article>
-
-    <article class="feature">
-      <div class="feature__text">
-        <p class="feature__num">iii.</p>
-        <h2>Share a trip. Keep a collection.</h2>
-        <p>Send a trip to a friend and they get their own editable copy — they can change it without touching yours. Group related plans into collections, and keep everything shared with you in one place.</p>
-      </div>
-      <span class="phone feature__media">
-        <img src="shots/shared.png" alt="The Shared tab in Travelstone, showing trips shared with you alongside your own collections." width="720" height="1565" loading="lazy">
-      </span>
-    </article>
-
-    <article class="feature">
-      <div class="feature__text">
-        <p class="feature__num">iv.</p>
-        <h2>Turn a trip into a story.</h2>
-        <p>Write up a journey as a short travel story and publish it to the community. Browse other travellers' first-hand trips for your next idea — and tell your own.</p>
-      </div>
-      <span class="phone feature__media">
-        <img src="shots/stories.png" alt="The Travel Stories feed in Travelstone, a scroll of illustrated first-hand trip stories from other travellers." width="720" height="1565" loading="lazy">
-      </span>
-    </article>
-
-    <article class="feature">
-      <div class="feature__text">
-        <p class="feature__num">v.</p>
-        <h2>Make it a photo-book.</h2>
-        <p>Design a real photo-book from your trip — choose the photos, lay out the pages, and preview the finished hardcover or softcover, page by page.</p>
-      </div>
-      <span class="phone feature__media">
-        <img src="shots/book.png" alt="A printed Travelstone photo-book preview, showing a cover and inside spreads laid out from a trip." width="720" height="1565" loading="lazy">
-      </span>
-    </article>
-
-    <article class="feature">
-      <div class="feature__text">
-        <p class="feature__num">vi.</p>
-        <h2>Know which card to use.</h2>
-        <p>At each stop, Travelstone suggests which of your own cards is best to pay with — foreign-exchange cost first, then rewards — with estimates in your home currency. Stored by name only; never card numbers.</p>
-      </div>
-      <span class="phone feature__media">
-        <img src="shots/cards.png" alt="A trip stop in Travelstone showing a 'best card to use' suggestion with a local-currency estimate." width="720" height="1565" loading="lazy">
-      </span>
-    </article>
-
-    <article class="feature">
-      <div class="feature__text">
-        <p class="feature__num">vii.</p>
-        <h2>A packing list, built for the trip.</h2>
-        <p>Sorted by category and tuned to your destination, season and length — so nothing gets left behind, and you can check it off as you go.</p>
-      </div>
-      <span class="phone feature__media">
-        <img src="shots/packing.png" alt="A categorized packing list for a Tokyo trip with checkboxes for documents, clothing and toiletries." width="720" height="1564" loading="lazy">
-      </span>
-    </article>
-
   </section>
 
   <section class="section" id="more">
@@ -245,6 +185,21 @@
     </nav>
   </div>
 </footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.theme-toggle');
+  if (!btn) return;
+  function sync(){ btn.setAttribute('aria-pressed', document.documentElement.getAttribute('data-theme') === 'light'); }
+  btn.addEventListener('click', function(){
+    var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('ts-theme', next); } catch(e){}
+    sync();
+  });
+  sync();
+})();
+</script>
 
 </body>
 </html>
