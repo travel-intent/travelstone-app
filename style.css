@@ -81,14 +81,14 @@ a:hover { color: var(--rust-deep); }
 }
 .brand {
   font-family: "Instrument Serif", Georgia, serif;
-  font-size: 26px; letter-spacing: .01em; color: var(--ink);
-  text-decoration: none; display: inline-flex; align-items: center; gap: 9px;
+  font-size: clamp(28px, 3.2vw, 36px); letter-spacing: .01em; color: var(--ink);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 11px;
 }
 .brand:hover { color: var(--ink); }
 .brand .mark {
-  width: 22px; height: 22px; flex: none;
+  width: clamp(30px, 3.4vw, 38px); height: clamp(30px, 3.4vw, 38px); flex: none;
   color: var(--rust);
-  border-radius: 5px; object-fit: cover; display: block;
+  border-radius: 8px; object-fit: cover; display: block;
 }
 .site-nav { display: flex; gap: 22px; font-size: 15px; font-weight: 500; }
 .site-nav a { color: var(--muted); text-decoration: none; }
@@ -389,4 +389,10 @@ a:hover { color: var(--rust-deep); }
 @media (max-width: 560px) {
   .feature-grid { grid-template-columns: 1fr; gap: 16px; }
   .fcard__media img { width: 56%; }
+}
+
+/* Phones: keep a large, legible logo + the theme toggle in the header;
+   the nav links are still available in the footer. */
+@media (max-width: 560px) {
+  .site-nav { display: none; }
 }
