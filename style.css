@@ -38,16 +38,17 @@
 
 /* ---- theme toggle (header, top right) ---- */
 .head-right { display: flex; align-items: center; gap: clamp(14px, 3vw, 22px); }
-.theme-toggle {
+.theme-toggle, .login-link {
   display: inline-flex; align-items: center; justify-content: center;
   width: 38px; height: 38px; flex: none; padding: 0;
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 999px; color: var(--ink); cursor: pointer;
+  text-decoration: none;
   transition: border-color .18s ease, color .18s ease, transform .18s ease;
 }
-.theme-toggle:hover { border-color: var(--rust); color: var(--rust); transform: translateY(-1px); }
-.theme-toggle:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
-.theme-toggle svg { width: 18px; height: 18px; display: block; }
+.theme-toggle:hover, .login-link:hover { border-color: var(--rust); color: var(--rust); transform: translateY(-1px); }
+.theme-toggle:focus-visible, .login-link:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
+.theme-toggle svg, .login-link svg { width: 18px; height: 18px; display: block; }
 .theme-toggle .ico-moon { display: none; }
 :root[data-theme="light"] .theme-toggle .ico-sun  { display: none; }
 :root[data-theme="light"] .theme-toggle .ico-moon { display: block; }
@@ -136,6 +137,20 @@ a:hover { color: var(--rust-deep); }
 .hero .appstore-badge img { display: block; height: 48px; width: auto; border-radius: 9px; }
 .hero .appstore-badge:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,.5); }
 .hero .appstore-badge:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
+/* "Open it on Web" — a text badge sized to match the store badges (48px tall),
+   kept dark in both themes so it sits with the black App Store / Play art. */
+.hero .web-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  height: 48px; padding: 0 18px; box-sizing: border-box;
+  background: #111; color: #fff; border: 1px solid #333; border-radius: 9px;
+  font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
+  font-weight: 600; font-size: 15px; line-height: 1; white-space: nowrap;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.hero .web-badge svg { width: 20px; height: 20px; display: block; }
+.hero .web-badge:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,.5); }
+.hero .web-badge:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
 
 /* phone image */
 .phone {
