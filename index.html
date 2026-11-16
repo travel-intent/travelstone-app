@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){try{var t=localStorage.getItem('ts-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<title>Travelstone — trips you can actually change</title>
-<meta name="description" content="Travelstone turns a destination and a few details into a day-by-day itinerary — swap any stop and the day re-plans. Share trips, write travel stories, make a printed photo-book, and more. For iPhone, iPad and Android.">
+<title>Travelstone: trips that change when you do</title>
+<meta name="description" content="Travelstone turns a destination and a few details into a day-by-day itinerary. Swap any stop or set the day's vibe and it re-plans in seconds. Share trips, write travel stories, make a printed photo-book, and more. For iPhone, iPad, Android and web.">
 <!-- Cuelinks site verification -->
 <meta name="cuelinks-verification" content="VERIFY-CL-U64WAM0C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 <div class="wrap">
@@ -31,17 +31,23 @@
         <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M3.5 3.5l1.9 1.9M18.6 18.6l1.9 1.9M2 12h2.6M19.4 12H22M3.5 20.5l1.9-1.9M18.6 5.4l1.9-1.9"/></svg>
         <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8z"/></svg>
       </button>
-      <a class="login-link" href="https://app.travelstone.app/sign-in" aria-label="Sign in to Travelstone on the web">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      </a>
+      <div class="login-menu">
+        <button class="login-link" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Sign in or sign up">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <div class="login-dropdown" role="menu" hidden>
+          <a role="menuitem" href="https://app.travelstone.app/sign-in">Sign in</a>
+          <a role="menuitem" href="https://app.travelstone.app/sign-in?mode=sign-up">Sign up</a>
+        </div>
+      </div>
     </div>
   </header>
 
   <section class="hero">
     <div class="hero__text">
-      <p class="eyebrow">iPhone · iPad · Android</p>
-      <h1>Trips you can <em>actually</em> change.</h1>
-      <p class="lede">Travelstone turns a destination and a few details into a day-by-day itinerary — then lets you swap any stop and re-plan the day in seconds. Share it, story it, or turn it into a printed book.</p>
+      <p class="eyebrow">iPhone · iPad · Android · Web</p>
+      <h1>Trips that <em>change</em> when you do.</h1>
+      <p class="lede">Travelstone turns a destination and a few details into a day-by-day itinerary. Swap any stop or set the day's vibe, and it re-plans in seconds. Share it, story it, or turn it into a printed book.</p>
       <div class="badges">
         <a class="appstore-badge" href="https://apps.apple.com/app/id6806945711" aria-label="Download Travelstone on the App Store">
           <img src="assets/app-store-badge.png" alt="Download on the App Store" width="144" height="48" loading="eager">
@@ -123,15 +129,15 @@
     <div class="caps">
       <div class="cap">
         <h3><span class="ico" aria-hidden="true">🍜</span> Taste of the city</h3>
-        <p>Signature local dishes for each place you stop — a quick bite, a main and something sweet — with a spot to try them.</p>
+        <p>Signature local dishes for each place you stop: a quick bite, a main and something sweet, with a spot to try them.</p>
       </div>
       <div class="cap">
         <h3><span class="ico" aria-hidden="true">🧭</span> Help me choose</h3>
-        <p>Not sure where to go? Tell Travelstone how long you have and it suggests destinations that fit — near and far.</p>
+        <p>Not sure where to go? Tell Travelstone how long you have and it suggests destinations that fit, near and far.</p>
       </div>
       <div class="cap">
         <h3><span class="ico" aria-hidden="true">🛂</span> Visa &amp; entry</h3>
-        <p>Entry requirements for your destination country, with official links — so there are no surprises at the border.</p>
+        <p>Entry requirements for your destination country, with official links, so there are no surprises at the border.</p>
       </div>
       <div class="cap">
         <h3><span class="ico" aria-hidden="true">✈️</span> Airport &amp; station transfers</h3>
@@ -143,19 +149,19 @@
   <section class="section" id="guides">
     <div class="head">
       <h2>Travel guides</h2>
-      <p>Short, practical reads on getting more out of a trip — from spending abroad without the fees to planning a week in an afternoon.</p>
+      <p>Short, practical reads on getting more out of a trip, from spending abroad without the fees to planning a week in an afternoon.</p>
     </div>
     <div class="guides-grid">
       <a class="guide-card" href="guides/foreign-transaction-fees/">
         <span class="kicker">Spending abroad</span>
         <h3>How to avoid foreign transaction fees</h3>
-        <p>The quiet 2–3% surcharge on overseas spending — what it is, and the simple ways to stop paying it.</p>
+        <p>The quiet 2–3% surcharge on overseas spending: what it is, and the simple ways to stop paying it.</p>
         <span class="more">Read the guide →</span>
       </a>
       <a class="guide-card" href="guides/which-card-to-use-abroad/">
         <span class="kicker">Spending abroad</span>
         <h3>Which card should you use abroad?</h3>
-        <p>A simple way to choose between the cards in your wallet on a trip — fees first, then rewards.</p>
+        <p>A simple way to choose between the cards in your wallet on a trip: fees first, then rewards.</p>
         <span class="more">Read the guide →</span>
       </a>
       <a class="guide-card" href="guides/plan-a-trip-in-an-afternoon/">
@@ -170,7 +176,7 @@
   <section class="section about" id="about">
     <div class="head">
       <h2>About Travelstone</h2>
-      <p>Travelstone is an independent app for iPhone, iPad and Android that turns a destination and a few details into a day-by-day itinerary you can change on the fly — swap any stop and the day re-plans, see it as a map, pack from a list built for the trip, share it, write it up as a story, or keep it as a printed book. It's made by a small team who wanted planning to feel less like homework. Questions or feedback? We read every message at <a href="mailto:support@travelstone.app">support@travelstone.app</a>.</p>
+      <p>Travelstone is an independent app for iPhone, iPad and Android that turns a destination and a few details into a day-by-day itinerary you can change on the fly: swap any stop and the day re-plans, see it as a map, pack from a list built for the trip, share it, write it up as a story, or keep it as a printed book. It's made by a small team who wanted planning to feel less like homework. Questions or feedback? We read every message at <a href="mailto:support@travelstone.app">support@travelstone.app</a>.</p>
     </div>
   </section>
 
@@ -205,6 +211,21 @@
     sync();
   });
   sync();
+})();
+
+(function(){
+  var menu = document.querySelector('.login-menu');
+  if (!menu) return;
+  var btn = menu.querySelector('.login-link');
+  var dd = menu.querySelector('.login-dropdown');
+  function open(){ dd.hidden = false; btn.setAttribute('aria-expanded', 'true'); }
+  function close(){ dd.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (dd.hidden) open(); else close();
+  });
+  document.addEventListener('click', function(e){ if (!menu.contains(e.target)) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
 })();
 </script>
 
