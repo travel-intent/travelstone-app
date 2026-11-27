@@ -193,6 +193,25 @@ footer a{text-decoration:none}
 footer a:hover{color:var(--ink)}
 .foot-links{display:flex;gap:1.3rem;flex-wrap:wrap;align-items:center}
 
+@media(max-width:600px){
+  header.site .wrap{gap:.5rem}
+  .brand{font-size:1.45rem;gap:.5rem}
+  .brand img{width:34px;height:34px}
+  nav.main{margin-left:auto}
+  nav.main .classic{font-size:.84rem;padding:.3rem .65rem}
+  .hbtns .btn-gold{display:none}
+  .tgl{width:34px;height:34px}
+  .hero{min-height:0}
+  .hero .wrap{padding-top:2.2rem;padding-bottom:2.6rem}
+  .hero h1{font-size:clamp(2.6rem,12vw,3.4rem)}
+  .hero .ctarow{gap:.6rem}
+  .hero .ctarow .btn{width:100%;justify-content:center}
+  .hero .ctarow .badge{width:calc(50% - .3rem);font-size:1rem;padding:.85rem .6rem;gap:.4rem}
+  .band{min-height:46vh}
+  .band h2{font-size:clamp(1.8rem,7vw,2.4rem)}
+  .closing h2{font-size:clamp(2rem,8vw,2.8rem)}
+  footer .wrap{flex-direction:column;align-items:flex-start;gap:1.1rem}
+}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
